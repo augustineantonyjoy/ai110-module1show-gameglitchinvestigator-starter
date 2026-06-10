@@ -4,9 +4,14 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 1. What was broken when you started?
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+- Hint suggestion is inverted. Instead of higher, it shows lower and vice versa.
+- New game button does't start new game
+- Normal mode has numbers ranging from 1 to 100 whereas Hard mode only has numbers ranging from 1 to 50
+- Number of chances for Normal mode is higher than Easy Mode
+- All modes displays guess number between 1 and 100 whereas on side bar, it shows different range for different modes
+- Secret cast to string on even attempts breaks comparisons
+- Win score double-penalizes attempt number
+- Wrong guesses rewarded with +5 points
 
 **Bug Reproduction Log**
 
@@ -14,7 +19,7 @@ Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| | | | |
+|Guess 60 | Go Higher | Go Lower | None |
 | | | | |
 | | | | |
 
@@ -49,3 +54,4 @@ Document at least 3 bugs you found. Add rows as needed.
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
