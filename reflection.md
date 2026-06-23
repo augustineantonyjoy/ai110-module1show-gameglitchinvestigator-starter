@@ -27,9 +27,26 @@ Document at least 3 bugs you found. Add rows as needed.
 
 ## 2. How did you use AI as a teammate?
 
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
-- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
-- Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
+I used Claude as my primary AI collaborator throughout this project for refactoring,
+bug fixing, and designing a test strategy. Claude helped me reorganize scattered game
+logic into `logic_utils.py`, making the code easier to test and reason about. I treated
+Claude like a pair programmer — I described the problem, reviewed what it produced, and
+then ran the code myself to confirm or challenge its suggestions.
+
+One example where Claude was correct: it correctly identified that the hint logic in
+`check_guess()` was inverted. The original code was returning "Go LOWER!" when the guess
+was too low and "Go HIGHER!" when it was too high. Claude flipped the conditionals so
+that `guess > secret` returns `"Too High"` with `"📉 Go LOWER!"` and `guess < secret`
+returns `"Too Low"` with `"📈 Go HIGHER!"`. I verified this fix by running `pytest` and
+confirming all hint-related assertions passed.
+
+One example where Claude was incorrect: Claude originally wrote a test that expected
+`check_guess()` to return `("Correct", "🎉 You got it!")`, but it had forgotten that the
+underlying starter code it had migrated still returned `("Win", "🎉 Correct!")`. This
+caused a test failure when I ran `pytest` in the terminal. I had to read the failure
+output carefully, trace it back to the string mismatch, and correct the return value
+myself. This taught me that AI-generated tests need to be treated as drafts, not ground
+truth.
 
 ---
 

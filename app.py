@@ -106,7 +106,7 @@ if submit:
             attempt_number=st.session_state.attempts,
         )
 
-        if outcome == "Win":
+        if outcome == "Correct":
             st.balloons()
             st.session_state.status = "won"
             st.success(
