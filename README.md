@@ -25,19 +25,26 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+This project is a Streamlit-based number guessing game designed to demonstrate how a decoupled architecture prevents critical state and logic failures. 
+
+Through this project, I identified and resolved several game-breaking bugs:
+* **The State Bug:** The secret number was resetting on every interaction because it wasn't properly tracked in Streamlit's session state.
+* **Inverted Logic:** The hints were inverted, telling users to guess lower when they needed to guess higher.
+* **Type Conversion Error:** On even attempts, the secret number was cast into a string, breaking future numerical comparisons.
+* **UI Inconsistencies:** The game logic returned mismatching win strings (`"Win"` vs `"Correct"`) which failed to trigger the UI victory screens.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User launches the app and selects "Normal" mode (Range: 1-100).
+2. User enters a guess of 50.
+3. Game returns "Too High" and displays the hint "📉 Go LOWER!".
+4. User enters a guess of 25.
+5. Game returns "Too Low" and displays the hint "📈 Go HIGHER!".
+6. User enters a guess of 37.
+7. Game returns "Correct", displays "🎉 You got it!", and updates the win score seamlessly.
+8. User clicks "New Game" and the game resets with a new secret number.
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
