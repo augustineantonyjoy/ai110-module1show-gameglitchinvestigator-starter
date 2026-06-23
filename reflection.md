@@ -22,7 +22,6 @@ Document at least 3 bugs you found. Add rows as needed.
 | Guess 60            | Go Higher              | Go Lower                   | None                   |
 | Guess on Attempt #2 | Secret stays a number  | Secret turns into a string | None                   |
 | Hard Mode           | Range increases to 200 | Range drops to 1-50        | None                   |
-|---------------------|------------------------|----------------------------|------------------------|
 
 ---
 
@@ -38,16 +37,16 @@ Document at least 3 bugs you found. Add rows as needed.
 
 - How did you decide whether a bug was really fixed?
 
-I used Claude for file refactoring, bug fixing, and project strategy.
+I decided a bug was fixed when it successfully passed both our automated unit tests and manual execution inside the live browser game without crashing or throwing silent errors.
 
 - Describe at least one test you ran (manual or using pytest)  
   and what it showed you about your code.
 
- Claude correctly identified the inverted hint strings in check_guess(). It suggested returning "Too High" /  "Go lower" when guess > secret. I verified the fix by running my pytest.
+I ran a `pytest` suite in the terminal to verify `check_guess()`. The test failed initially, showing me that our refactored backend logic was returning `("Win, Correct!")` while the test suite expected `("Correct, You got it!")`. This caught a critical string mismatch before deployment.
 
 - Did AI help you design or understand any tests? How?
 
-Claude wrote a test expecting check_guess() to return ("Correct, You got it!"), forgetting the underlying code it migrated actually returned ("Win, Correct!"). This caused a test failure. I caught the mismatch via the pytest log and manually aligned the code with the test.
+Yes, Claude generated the initial `pytest` structure for testing the high, low, and correct guess boundaries. When the test failed due to the string mismatch, analyzing Claude's test logs helped me understand exactly where the backend logic deviated from the expected UI behavior.
 
 ---
 

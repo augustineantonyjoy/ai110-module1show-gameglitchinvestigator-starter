@@ -33,6 +33,7 @@ def parse_guess(raw: str):
 
 
 def check_guess(guess, secret):
+    # FIX: Refactored logic into logic_utils.py and fixed bugs using Claude
     """
     Compare guess to secret and return (outcome, message).
 

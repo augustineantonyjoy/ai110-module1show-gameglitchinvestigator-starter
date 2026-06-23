@@ -83,6 +83,7 @@ if st.session_state.status != "playing":
     st.stop()
 
 if submit:
+    # FIX: Refactored logic into logic_utils.py and fixed bugs using Claude
     st.session_state.attempts += 1
 
     ok, guess_int, err = parse_guess(raw_guess)
